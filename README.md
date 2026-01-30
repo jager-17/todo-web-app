@@ -1,16 +1,93 @@
-# React + Vite
+# Todo Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack Todo / Board management web application developed using **React with Vite** for the frontend, **Firebase Authentication** for user login and signup, and **Node.js, Express, and MongoDB** for the backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- User Signup and Login using Firebase Authentication
+- Authentication-protected dashboard
+- Create Todo Boards
+- Fetch and display boards
+- REST APIs using Express
+- MongoDB database integration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React
+- Vite
+- JavaScript
+- Firebase Authentication
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Atlas)
+
+---
+
+## Project Structure
+
+todo-web-app/
+│
+├── src/
+│ ├── pages/
+│ │ ├── Login.jsx
+│ │ └── Signup.jsx
+│ ├── firebase.js
+│ ├── App.jsx
+│ └── main.jsx
+│
+├── backend/
+│ ├── models/
+│ ├── routes/
+│ ├── index.js
+│ └── .env
+│
+└── README.md
+
+
+---
+
+## Authentication
+
+Firebase Authentication is used for:
+- Email and Password Signup
+- Email and Password Login
+
+Authentication state is handled using Firebase's `onAuthStateChanged` method.
+
+---
+
+## Database Configuration
+
+This project uses **MongoDB Atlas** as the database.
+---
+
+## How to Run the Project
+
+### Frontend
+```bash
+npm install
+npm run dev
+
+cd backend
+npm install
+node index.js
+Backend runs on:
+
+arduino
+Copy code
+http://localhost:5001
+
+API Endpoints
+
+POST /api/boards → Create a board
+
+GET /api/boards → Get all boards
+
+GET /api/todos/:boardId → Get todos of a board

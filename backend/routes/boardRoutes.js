@@ -2,20 +2,25 @@ const express = require("express");
 const router = express.Router();
 const Board = require("../models/Board");
 
+// ✅ GET all boards
+router.get("/", async (req, res) => {
+  try {
+    const boards = await Board.find();
+    res.json(boards);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// ✅ CREATE board
 router.post("/", async (req, res) => {
   try {
-    const { title } = req.body;
-
-    if (!title) {
-      return res.status(400).json({ message: "Title required" });
-    }
-
-    const board = await Board.create({ title });
-
-    return res.status(201).json(board);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Server error" });
+    const board = await Board.create({
+      title: req.body.title,
+    });
+    res.status(201).json(board);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
